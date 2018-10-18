@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/fab_margin">
+
+    <Button
+        android:layout_width="match_parent"
+        android:id="@+id/recur_yes"
+        android:textColor="@color/colorWhite"
+        android:text="YES"
+        android:layout_marginTop="2dp"
+        android:background="@drawable/recur_backgroud"
+        android:layout_height="wrap_content" />
+    <Button
+        android:layout_width="match_parent"
+        android:id="@+id/recur_no"
+        android:text="NO"
+        android:textColor="@color/colorWhite"
+        android:layout_marginTop="2dp"
+        android:layout_below="@+id/recur_yes"
+        android:background="@drawable/recur_backgroud"
+        android:layout_height="wrap_content" />
+
+</RelativeLayout>
