@@ -317,7 +317,12 @@ public class NoteAddActivity extends BaseActivity {
 
     private byte[] GetIMageNoteBitmap(){
         imageForNote.buildDrawingCache();
+        /*
+        would use this for now would also convert from storing as blog to file so this would not show
+        an image just jargon
+         */
         Bitmap bitmap=imageForNote.getDrawingCache();
+        //Bitmap bitmap=imageForNote.getBitmap();//this would be too large to fix memmory
         if(bitmap==null){
             return null;
         }

@@ -34,8 +34,8 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onResume() {
-        super.onResume();
+    protected void onStart() {
+        super.onStart();
         bindService(new Intent(this,NoteService.class),serviceConnection, Context.BIND_AUTO_CREATE);
     }
 }

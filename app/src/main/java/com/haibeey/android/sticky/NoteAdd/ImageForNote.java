@@ -29,17 +29,18 @@ public class ImageForNote extends AppCompatImageView {
 
     public ImageForNote(Context context) {
         super(context);
-        init();
+        this.setDrawingCacheEnabled(true);
     }
+
 
     public ImageForNote(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
-        init();
+        this.setDrawingCacheEnabled(true);
     }
 
     public ImageForNote(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        init();
+        this.setDrawingCacheEnabled(true);
     }
 
     public void setStrokeWidth(int strokeWidth) {
@@ -57,12 +58,10 @@ public class ImageForNote extends AppCompatImageView {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-
-        this.draw(canvasThatHasBitmap);
+        init();
         for(MyPath path:paths){
             drawapath(path,canvas, (int) mova.getSelectedColor());
         }
-
     }
 
     private void drawapath(MyPath path,Canvas canvas,int color) {
@@ -78,7 +77,6 @@ public class ImageForNote extends AppCompatImageView {
         paint.setStrokeJoin(Paint.Join.ROUND);
         bitmap=Bitmap.createBitmap(getWidth(),getHeight(), Bitmap.Config.ARGB_8888);
         canvasThatHasBitmap=new Canvas(bitmap);
-
     }
     @Override
     public boolean onTouchEvent(MotionEvent event) {
@@ -106,4 +104,8 @@ public class ImageForNote extends AppCompatImageView {
         invalidate();
     }
 
+    public Bitmap getBitmap(){
+        this.draw(canvasThatHasBitmap);
+        return bitmap;
+    }
 }
