@@ -29,7 +29,7 @@ public class NoteService extends Service {
     private ArrayList<Note> notes=new ArrayList<>();
     private ArrayList<View> views=new ArrayList<>();
     private final IBinder binder=new LocalBinder();
-    boolean binded=false;
+    private boolean binded=false;
 
 
     public class LocalBinder extends Binder{
@@ -40,7 +40,8 @@ public class NoteService extends Service {
     public NoteService() {
     }
 
-    public void trigger(boolean hide){
+
+    public synchronized void  trigger(boolean hide){
         Log.e("istrigged",hide+" "+views+" "+views.size());
         if(hide){
             if(views!=null){
@@ -56,14 +57,13 @@ public class NoteService extends Service {
             }
         }
     }
+
     @Override
     public IBinder onBind(Intent intent) {
         binded=true;
         return binder;
     }
 
-
-    @SuppressLint("StaticFieldLeak")
     @Override
     public void onCreate() {
         //Add the view to the window
